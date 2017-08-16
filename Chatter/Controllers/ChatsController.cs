@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Chatter.Models;
+using Newtonsoft.Json;
 
 namespace Chatter.Controllers
 {
@@ -20,9 +21,8 @@ namespace Chatter.Controllers
             var chats = db.Chats.Include(c => c.AspNetUser);
             return View(chats.ToList());
         }
-
+ 
         //Create a new method called TestJson. It returns a C# object called JsonResult
-
         public JsonResult TestJson()
         {
             string jsonTest = "{ \"firstName\": \"Bob\", \"lastName\": \"Sauce\", \"children\": [{\"firstName\": \"Barbie\", \"age\": 19 },{\"firstName\": \"Ron\", \"age\": null }] }";
