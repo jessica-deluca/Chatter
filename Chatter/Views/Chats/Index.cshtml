@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Chatter.Models.Chat>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div id="response"></div>
+<button id="getChats" class="btn btn-primary">Get Chats</button>
+
+@section Scripts {
+    <script>
+        //JSON . . . Javascript object
+        //alert(“hello world!”);
+        //var jsonTest = { "ID": 1, "userID": 1, "Message": "Hello World" };
+        //var jsonTest = { "firstName": "Bob", "lastName": "Sauce", "children": [{ "firstName": "Barbie", "age": 19 }, { "firstName": "Ron", "age": null }] }
+
+        //now some jQuery
+        //$("#response").text(jsonTest.Message);
+        //$("#response").text(jsonTest.children[0].firstName);
+
+        //AJAX request using jQuery as a helper
+        //Notice this combines Razor syntax (@Url.Action()) in order to have the compiler figure out the exact path of the controller, alongside of jQuery.
+        @*$.get("@Url.Action("TestJson","Chats")", function (response) {
+            alert(response);
+        });*@
+
+        $.get("@Url.Action("TestJson","Chats")", function (serverResponse) {
+            var jsonTest = JSON.parse(serverResponse);
+            console.log(jsonTest);
+            $("#response").text(jsonTest.firstName);
+        });
+
+    </script>
+}
