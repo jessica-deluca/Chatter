@@ -12,7 +12,7 @@
 
 <div id="response"></div>
 <button id="getChats" class="btn btn-primary">Get Chats</button>
-@*<button id="post" class="btn btn-primary">Post</button>*@
+<button id="post" class="btn btn-primary">Post</button>
 
 @section Scripts {
     <script>
@@ -46,13 +46,10 @@
         }
         );*@
 
-
-            //Update your View so it shows the users with their chats in an attractive way.
-            //Your ultimate solution must be different than my example (above), you can use the same techniques though.
-
-            @*$("#post").click(function () {
-                $.get("@Url.Action("PostChats")")
-            });*@
+            $("#post").click(function () {
+                $.get("@Url.Action("PostChats","Chats")")
+            }
+            );
 
             $("#getChats").click(function () {
                 $.get("@Url.Action("TestJson","Chats")", function (serverResponse) {

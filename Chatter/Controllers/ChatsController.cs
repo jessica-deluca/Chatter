@@ -44,7 +44,6 @@ namespace Chatter.Controllers
             return Json(output, JsonRequestBehavior.AllowGet);
         }
 
-
         public JsonResult PostChats([Bind(Include = "Message")] Chat chat)
         {
             //we need to fill out information for our model so we can easily insert it.
@@ -70,8 +69,6 @@ namespace Chatter.Controllers
             return new JsonResult() { Data = JsonConvert.SerializeObject(chat.ID), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
         
-
-
         // GET: Chats/Details/5
         public ActionResult Details(int? id)
         {
