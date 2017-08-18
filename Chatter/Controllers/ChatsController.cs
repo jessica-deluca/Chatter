@@ -59,6 +59,7 @@ namespace Chatter.Controllers
             //Now, since we have a foreign key join on the asp.netuser table, the 2 models in EF (AspNetUser and Chat) reference each other
             //Because of this, we need to get a complete user object, not just the userID 
             string currentUserId = User.Identity.GetUserId();
+            chat.UserID = currentUserId;
             chat.AspNetUser = db.AspNetUsers.FirstOrDefault(x => x.Id == currentUserId);
 
             if (ModelState.IsValid)

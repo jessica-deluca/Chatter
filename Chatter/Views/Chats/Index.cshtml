@@ -46,13 +46,9 @@
         }
         );*@
 
-            $("#post").click(function () {
-                $.get("@Url.Action("PostChats","Chats")")
-            }
-            );
-
             $("#getChats").click(function () {
                 $.get("@Url.Action("TestJson","Chats")", function (serverResponse) {
+                    $("#response").empty();
                     var jsonTest = JSON.parse(serverResponse);
                     //console.log(jsonTest);
 
@@ -70,11 +66,13 @@
                         ul.append(li); //similar to $("#messageList").append(li), but more efficient b/c it doesn't need to query for the list again.
                         li.append(p);
                     });
-                })
-            }
-            );
+                });
+            });
 
-        }
-        );
+            $("#post").click(function () {
+                var Message = prompt("Type your chat", "");
+                $.post("@Url.Action("PostChats","Chats")", { Message, Message});
+            });
+        });
     </script>
 }
